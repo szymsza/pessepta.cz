@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/js/app.js"],"names":["Grepl","console","log"],"mappings":";;;;;;;;IAAMA,K;;;;;;;;;4BACG;AACPC,MAAAA,OAAO,CAACC,GAAR,CAAY,OAAZ;AACA","sourcesContent":["class Grepl {\n\tpletl() {\n\t\tconsole.log(\"svetr\")\n\t}\n}"],"file":"app.js"}

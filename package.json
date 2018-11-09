@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "scripts": {
+    "prod": "grunt buildcss",
+    "dev": "grunt watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^8.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "node-sass": "^4.9.0"
+  },
+  "dependencies": {}
+}
