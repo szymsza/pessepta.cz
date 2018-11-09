@@ -1,4 +1,4 @@
-<div id="oblasti">
+<div id="page-categories">
 	<h1>Zvolte oblasti otázek:</h1>
 	<input type="checkbox">Osobnosti<br>
 	<input type="checkbox" class="spodní">Politici<br>
