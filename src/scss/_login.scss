@@ -1,23 +1,22 @@
 #page-login {
-		color: blue;
-		background-color: red;
+	text-align: center;
  	h1 {
 		color: black;
 		size: 20px;
-		text-align: center;
 	}
-	button{
-		width:  300px;
-		height: 150px;
-		font-size: 50px;
-		background-color: yellow;
-		text-decoration-color: red;
-	}
-	img{
-		width: 10%;
-		height: 10%;
-		align-self:   right;
 
+	button {
+		height: auto;
+		font-size: 2rem;
+		padding-top: 1rem;
+		img {
+			display: block;
+			height: 10rem;
+			margin: 0 auto;
+		}
 	}
-	
+
+	.col {
+		padding-bottom: 5rem;
+	}
 }
