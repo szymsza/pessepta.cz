@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = function(grunt) {
     grunt.initConfig({
       watch: {
@@ -26,22 +28,21 @@ module.exports = function(grunt) {
           }
         }
       },
-    babel: {
-        options: {
-            sourceMap: true
-        },
-        dist: {
-            files: {
-                'dist/app.js': 'src/js/app.js'
-            }
-        }
+    webpack: {
+      myConfig: {
+        entry: './src/js/app.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'app.js'
+  }
+      },
     }
     });
 
     grunt.loadNpmTasks("grunt-contrib-sass");
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks("grunt-babel");
+    grunt.loadNpmTasks('grunt-webpack');
 
     grunt.registerTask("buildcss", ["sass"]);
-    grunt.registerTask("buildjs", ["babel"])
+    grunt.registerTask("buildjs", ["webpack"])
 };

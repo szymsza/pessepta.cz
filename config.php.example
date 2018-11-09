@@ -1,0 +1,8 @@
+<?php
+
+$db = [
+	"server" => "localhost",
+	"database" => "pessepta.cz",
+	"login" => "root",
+	"password" => ""
+];
