@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "prod": "grunt buildcss",
+    "prod": "grunt buildcss | grunt buildjs",
     "dev": "grunt watch"
   },
   "devDependencies": {
