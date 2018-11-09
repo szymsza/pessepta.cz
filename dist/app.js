@@ -17,6 +17,7 @@ function () {
     key: "pletl",
     value: function pletl() {
       console.log("svetr");
+      document.write("Svetr");
     }
   }]);
 
