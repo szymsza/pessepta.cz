@@ -1,6 +1,4 @@
-class Grepl {
-	pletl() {
-		console.log("svetr")
-		document.write("Svetr")
-	}
-}
+import Page from "./Page.js"
+
+var page = new Page()
+page.move("login")
