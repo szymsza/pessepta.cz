@@ -112,7 +112,6 @@ class Question {
 			//annyang.removeCommands()
 			var commands = {
 				"pokračovat": function() {
-					alert("continus");
       				that.page.find(".button-wrapper").click();
     			}
     		};
