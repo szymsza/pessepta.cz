@@ -11,7 +11,7 @@
 	 			</label>
 
 	 			<label>
-	 				<input type="checkbox" class="filled-in" data-value="porn">
+	 				<input type="checkbox" class="filled-in" data-value="recipe">
 	 				<span>Recepty</span>
 	 			</label>
 
