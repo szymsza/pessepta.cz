@@ -5,6 +5,9 @@
 			<div class="col m12">
 				<h4>Výsledek: <span class="points_received"></span> z <span class="points_total"></span></h4>
 			</div>
+			<div class="col m12">
+				<img src="https://cdn.vox-cdn.com/thumbor/ZROlarAjWbjX5nCxiZNUPnwXwRk=/148x0:1768x1080/1200x800/filters:focal(148x0:1768x1080)/cdn.vox-cdn.com/uploads/chorus_image/image/46147742/cute-success-kid-1920x1080.0.0.jpg">
+			</div>
 		</div>
 		<div class="row multi-result">
 			<div class="col m12">

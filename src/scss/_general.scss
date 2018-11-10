@@ -22,7 +22,9 @@ h1 {
 	position: fixed;
 	right: 0;
 	top: 25%;
-	z-index: -1;
+	@media only screen and (max-width: 720px) {
+		z-index: -1;
+	}
 	> img {
 		height: 40vh;
 	}
