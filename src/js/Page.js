@@ -93,6 +93,7 @@ class Page {
 			finished: function(pageElement) {
 				var total = $(".points .points_total")[0].innerText;
 				if (window.game.players.length > 1) {
+					$("#page-finished .multi-result ol").html("");
 					for (let index in window.game.players) {
 						let player = window.game.players[index]
 
