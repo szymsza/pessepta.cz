@@ -89,6 +89,23 @@ class Page {
 			},
 
 			finished: function(pageElement) {
+				var total = $(".points .points_total")[0].innerText;
+				if (window.game.players.length > 1) {
+					for (let index in window.game.players) {
+						let player = window.game.players[index]
+
+						$("#page-finished .multi-result ol").append("<li>"+player.name+" ("+player.points+" z "+total+")");
+					}
+					$("#page-finished .multi-result").show();
+					$("#page-finished .single-result").hide();
+				} else {
+					$("#page-finished .single-result").find(".points_received").text(window.game.players[0].points);
+					$("#page-finished .single-result").find(".points_total").text(total);
+
+					$("#page-finished .multi-result").hide();
+					$("#page-finished .single-result").show();
+				}
+
 				pageElement.find("button").off().on("click", function() {
 					var page = new Page();
 					page.move("login")

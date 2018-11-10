@@ -103,9 +103,22 @@ class Question {
 	}
 
 	_endGame() {
-		var points = window.game.points;
+		window.game.players.sort(function(a,b) {
+  			if (a.points > b.points)
+	    		return -1;
+  			if (a.points < b.points)
+    			return 1;
+  			return 0;
+		})
 
-		Hund.say(["Konec hry!", "Získal jsi "+points+" bod"+(points == 1 ? "" : (points > 4 || points == 0 ? "ů" : "y"))+" z "+($(".points_total")[0].innerText)+".", "Chceš hrát znovu?"]);
+		if (window.game.players.length > 1)
+			var message = "Gratuluji hráči "+window.game.players[0].name+" k vítězství!"
+		else {
+			var points = window.game.players[0].points;
+			var message = "Získal jsi "+points+" bod"+(points == 1 ? "" : (points > 4 || points == 0 ? "ů" : "y"))+" z "+($(".points .points_total")[0].innerText)+"."
+		}
+
+		Hund.say(["Konec hry!", message, "Chceš hrát znovu?"]);
 	}
 
 	_updatePoints() {

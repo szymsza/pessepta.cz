@@ -6,15 +6,15 @@ function greet() {
 		"haf haf!",
 		"ahoj seznamáku!",
 		"vítej ve hře Pes se ptá",
-		"moje jméno je Krasty",
-		"jsem pes od seznamu a budu vás touto hrou provázet",
-		"chceš si hrát sám, nebo s přáteli?"
+		"moje jméno je Krasty, jsem pes ze seznamu a budu tě touto hrou provázet",
+		"chceš hrát sám, nebo s přáteli?"
 	]);
 }
 
 $(document).ready(function() {
 	var page = new Page()
-	page.move("multiplayer")
+
+	page.move("login")
 
 	setTimeout(function() {
 		// sound won't play until document has focus
