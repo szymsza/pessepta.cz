@@ -108,6 +108,18 @@ class Page {
 					$("#page-finished .single-result").show();
 				}
 
+				if (annyang) {
+					var commands = {
+						"hrát znovu": function() {
+      						Question.loadQuestions();
+      						annyang.pause()
+    					}
+    				};
+  					annyang.addCommands(commands);
+
+  					annyang.start();
+				}
+
 				pageElement.find("button").off().on("click", function() {
 					var page = new Page();
 					page.move("login")
