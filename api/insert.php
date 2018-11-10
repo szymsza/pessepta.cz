@@ -9,7 +9,7 @@ $insert = [
 	"month" => (int)$data["mesic"],
 	"day" => (int)$data["den"],
 	"category" => trim($data["kategorie"]),
-	"image" => trim($data["image"])
+	"image" => ""//trim($data["image"])
 ];
 
 switch ($insert["category"]) {
@@ -41,16 +41,7 @@ if ($db->query("SELECT * FROM `records` WHERE `text` = '".$insert["text"]."'")->
 		"message" => "already exists"
 	]));
 
-try {
 $db->prepare("INSERT INTO `records` (`text`, `year`, `month`, `day`, `category`, `image`) VALUES (:text, :year, :month, :day, :category, :image)")->execute($insert);
-    } catch( PDOEXception $e ) {
-
-
-           echo $e->getMessage(); // display error
-           exit();
-
-
-    }
 
 
 echo json_encode([
