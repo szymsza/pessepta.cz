@@ -3,8 +3,10 @@ import Hund from "./Hund.js"
 
 class Question {
 	constructor(data, page) {
-		if (++window.game.currentPlayer >= window.game.players.length)
+		if (++window.game.currentPlayer >= window.game.players.length) {
+			$(".round_wrapper .round").text(++window.game.round);
 			window.game.currentPlayer = 0;
+		}
 
 		this.page = page;
 		this.data = data;
@@ -135,6 +137,7 @@ class Question {
 		}).done(function(d) {
 			window.game.questions = d
 			window.game.currentPlayer = -1;
+			window.game.round = 1;
 
 			$(".points li:nth-child(n+2)").remove()
 
@@ -150,8 +153,9 @@ class Question {
 				wrapper.find(".points_name").text(player.name);
 			}
 
-			$(".points_total").text(d.length / window.game.players.length);
+			$(".points_total, .round_wrapper .total").text(d.length / window.game.players.length);
 			$(".points_received").text(0)
+			$(".round_wrapper .round").text(1);
 
 			var page = new Page()
 			page.move("questions");

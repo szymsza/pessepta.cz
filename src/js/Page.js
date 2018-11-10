@@ -19,7 +19,7 @@ class Page {
 						}
 						page.move("settings")
 						Hund.say([
-							"tak fajn, budeme si hrát spolu", 
+							"tak fajn, budeme hrát spolu", 
 							"přizpůsob si hru podle svých představ"
 						])
 					} else
@@ -176,7 +176,7 @@ class Page {
 		var that = this;
 
 		pageElement.fadeIn(200, function() {
-			$(".points").toggleClass("hide", (pageName != "questions"));
+			$(".points, .round_wrapper").toggleClass("hide", (pageName != "questions"));
 
 			var afterMove = that.afterMove[pageName]
 			if (afterMove)
