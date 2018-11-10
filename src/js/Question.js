@@ -57,6 +57,7 @@ class Question {
 		element.find(".card-action").text(data.text)
 		element.find("img").attr("src", data.image)
 		element.find(".card-title").toggleClass("winning", data.count == this.data.winner).text(data.countText).hide();
+		element.parent().find("a").attr("href", "https://search.seznam.cz/?q="+encodeURI(data.text))
 
 		element.off().on("click", (function() {
 			if (!this.isGuessed)

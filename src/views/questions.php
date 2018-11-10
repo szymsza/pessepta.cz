@@ -10,6 +10,7 @@
         			</div>
         			<div class="card-action waves-light red darken-1"></div>
       			</div>
+      			<a href="https://search.seznam.cz/?q=test" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/circle-icons/512/seznam.png"></a>
 			</div>
 			<div class="col m6">
 				<div class="card">
@@ -19,6 +20,7 @@
         			</div>
         			<div class="card-action waves-light red darken-1"></div>
       			</div>
+      			<a href="https://search.seznam.cz/?q=test" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/circle-icons/512/seznam.png"></a>
 			</div>
 			<div class="col m12 button-wrapper">
 				<button class="waves-effect waves-light btn-large red darken-1">

@@ -5,40 +5,6 @@ class Page {
 	constructor() {
 		this.afterMove = {
 			login: function(pageElement) {
-if (annyang) {
-
-  // Let's define our first command. First the text we expect, and then the function it should call
-  var commands = {
-    'singleplayer': function() {
-      window.game = {
-							players: [
-								{
-									name: "Skóre",
-									points: 0
-								}
-							]
-						}
-						var page = new Page()
-						page.move("settings")
-						Hund.say([
-							"tak fajn, budeme hrát spolu", 
-							"přizpůsob si hru podle svých představ"
-						])
-    },
-    multiplayer: function() {
-    	var page = new Page()
-    	page.move("multiplayer");
-    }
-  };
-
-  // Add our commands to annyang
-  annyang.addCommands(commands);
-
-  // Start listening. You can call this here, or attach this call to an event, button, etc.
-  annyang.start();
-}
-
-
 				pageElement.find("button").off().on("click", function() {
 					var page = new Page()
 
