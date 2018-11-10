@@ -19,16 +19,33 @@ switch ($settings["period"]) {
 
 $return = [];
 
-for ($i=0; $i < $settings["rounds"]; $i++) { 
-	$query = $db->query("SELECT * FROM `records` WHERE `category` in ('".implode("', '", $categories)."') ORDER BY RAND() LIMIT 2");
+while (count($return) < $settings["rounds"]) { 
+	$query = $db->query("SELECT * FROM `records` WHERE `category` in ('".implode("', '", $categories)."') ORDER BY RAND() LIMIT 1");
+	$items = [$query->fetch()];
+	$count = $items[0][$settings["period"]];
+
+	# difficult - difference is 0-10%; easy - difference is 10-50%
+	if ($settings["difficult"])
+		$condition = "(`".$settings["period"]."` > '".($count - $count*0.1)."' AND `".$settings["period"]."` < '".($count + $count*0.1)."')";
+	else
+		$condition = "((`".$settings["period"]."` < '".($count - $count*0.1)."' AND `".$settings["period"]."` > '".($count - $count*0.5)."') OR 
+					(`".$settings["period"]."` > '".($count + $count*0.1)."' AND `".$settings["period"]."` < '".($count + $count*0.5)."'))";
+
+	$query = $db->query("SELECT * FROM `records` WHERE `category` in ('".implode("', '", $categories)."') AND `id` != '".$items[0]["id"]."' AND ".$condition." ORDER BY RAND() LIMIT 1");
+
+	if (!$query->fetch())
+		continue;
+
+	$items[] = $query->fetch();
 
 	$result = [];
 
-	$biggest = 0;
-	foreach ($query->fetchAll() as $item) {
-		$count = $item[$settings["period"]];
+	$biggest = $count;
+	foreach ($items as $item) {
+		$count = $items[0][$settings["period"]];
 		if ($count > $biggest)
 			$biggest = $count;
+
 		$result[] = [
 			"text" => $item["text"],
 			"image" => $item["image"],
