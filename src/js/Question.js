@@ -36,9 +36,8 @@ class Question {
 
 	_makeGuess(guessed) {
 		this.isGuessed = true;
-		// TODO - zvuk výhry/prohry
 		if (this.data.winner == guessed.count) {
-			Hund.play("ring.mp3")
+			Hund.play("right.mp3")
 			Hund.say([
 				"Máš pravdu, "+guessed.text+" je vyhledávanější.",
 				"Je to tak. Jupí!",
@@ -46,7 +45,8 @@ class Question {
 				"Přesně tak. Jen tak dál!"
 			], true)
 			window.game.points++
-		} else
+		} else {
+			Hund.play("wrong.mp3")
 			Hund.say([
 				"Mrzí mě to, ale není to tak",
 				"Bohužel tvá odpověď není správná",
@@ -55,6 +55,7 @@ class Question {
 				"Tentovkát to bohužel "+guessed.text+" není",
 				"Bohužel, "+guessed.text+" je méně vyhledávaný"
 			], true)
+		}
 		
 		this._updatePoints();
 
