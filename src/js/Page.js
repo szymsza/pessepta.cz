@@ -175,7 +175,7 @@ class Page {
 		var pageElement = $("#pages>#page-"+pageName);
 		var that = this;
 
-		if (annyang && pageName != "question") {
+		if (annyang && pageName != "questions") {
 			annyang.removeCommands();
 			annyang.abort();
 		}
