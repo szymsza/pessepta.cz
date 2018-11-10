@@ -4,6 +4,7 @@
 		height: auto;
 		font-size: 2rem;
 		padding-top: 1rem;
+		@include hover();
 		img {
 			display: block;
 			height: 10rem;

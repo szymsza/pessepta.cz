@@ -1,4 +1,5 @@
 import Hund from "./Hund.js"
+import Question from "./Question.js"
 
 class Page {
 	constructor() {
@@ -42,27 +43,22 @@ class Page {
 					if (!pageElement.find("input[type=checkbox]:checked").length)
 						return Hund.say("vyber něco, debile");
 
-					var categories = {};
-					pageElement.find(".col > label input:checked").each(function() {
-						var subcategories = [];
-
-						if ($(this).parent().next().hasClass("subcategories"))
-							$(this).parent().next().find("input:checked").each(function() {
-								subcategories.push($(this).data("value"))
-							});
-
-						categories[$(this).data("value")] = subcategories;
+					var categories = [];
+					pageElement.find(".col input:checked").each(function() {
+						categories.push($(this).data("value"));
 					});
 
 					window.selectedCategories = categories;
 
-					var page = new Page()
-					page.move("questions");
+					Question.loadQuestions();
 				});
 			},
 
 			questions: function(pageElement) {
-				console.log(window.selectedCategories);
+				var question = new Question(questions[0], pageElement)
+				question.render();
+
+				questions.shift();
 			}
 		};
 	}
