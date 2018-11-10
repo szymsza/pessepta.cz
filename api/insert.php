@@ -9,7 +9,7 @@ $insert = [
 	"month" => (int)$data["mesic"],
 	"day" => (int)$data["den"],
 	"category" => trim($data["kategorie"]),
-	"image" => ""//trim($data["image"])
+	"image" => trim($data["image"])
 ];
 
 switch ($insert["category"]) {
