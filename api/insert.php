@@ -25,7 +25,7 @@ switch ($insert["category"]) {
 		$insert["category"] = "recipe";
 		break;
 
-	case 'porno':
+	case 'porn':
 		$insert["category"] = "porn";
 		break;
 	

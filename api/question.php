@@ -19,6 +19,9 @@ switch ($settings["period"]) {
 
 $return = [];
 
+$difficultLimit = 0.15;
+$easyLimit = 0.75;
+
 while (count($return) < $settings["rounds"]) { 
 	$query = $db->query("SELECT * FROM `records` WHERE `category` in ('".implode("', '", $categories)."') ORDER BY RAND() LIMIT 1");
 	$items = [$query->fetch()];
@@ -26,10 +29,10 @@ while (count($return) < $settings["rounds"]) {
 
 	# difficult - difference is 0-10%; easy - difference is 10-50%
 	if ($settings["difficult"])
-		$condition = "(`".$settings["period"]."` > '".($count - $count*0.1)."' AND `".$settings["period"]."` < '".($count + $count*0.1)."')";
+		$condition = "(`".$settings["period"]."` > '".($count - $count*$difficultLimit)."' AND `".$settings["period"]."` < '".($count + $count*$difficultLimit)."')";
 	else
-		$condition = "((`".$settings["period"]."` < '".($count - $count*0.1)."' AND `".$settings["period"]."` > '".($count - $count*0.5)."') OR 
-					(`".$settings["period"]."` > '".($count + $count*0.1)."' AND `".$settings["period"]."` < '".($count + $count*0.5)."'))";
+		$condition = "((`".$settings["period"]."` < '".($count - $count*$difficultLimit)."' AND `".$settings["period"]."` > '".($count - $count*$easyLimit)."') OR 
+					(`".$settings["period"]."` > '".($count + $count*$difficultLimit)."' AND `".$settings["period"]."` < '".($count + $count*$easyLimit)."'))";
 
 	$query = $db->query("SELECT * FROM `records` WHERE `category` in ('".implode("', '", $categories)."') AND `id` != '".$items[0]["id"]."' AND ".$condition." ORDER BY RAND() LIMIT 1");
 
