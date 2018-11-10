@@ -28,6 +28,10 @@ $(document).ready(function() {
 		Hund.say("haf haf")
 	});
 
+	$(".home-icon").click(function() {
+		page.move("login")
+	});
+
 	window.sound = true;
 	$(".hund>span>img").click(Hund.toggleSound);
 });

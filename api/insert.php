@@ -36,6 +36,12 @@ switch ($insert["category"]) {
 
 // Query already exists
 if ($db->query("SELECT * FROM `records` WHERE `text` = '".$insert["text"]."'")->fetchColumn()) {
+	if ($insert["category"] == "porn")
+		die(json_encode([
+			"ok" => false,
+			"porn" => true
+		]));
+
 	$db->query("UPDATE `records` SET `image` = '".$insert["image"]."' WHERE `text` = '".$insert["text"]."'");
 	die(json_encode([
 		"ok" => true,
