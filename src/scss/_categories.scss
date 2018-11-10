@@ -1,11 +1,31 @@
 #page-categories {
-	display: none;
-	h1{
-		text-align: center;
-		size: 50px;
-		color: black;
+	label {
+		display: block;
+		padding-bottom: .5rem;
+
+		span {
+			color: black;
+			font-size: 1.2rem;
+
+			&::after {
+				background-color: #e53935;
+				border-color: #e53935;
+			}
+		}
+
+		input:not(:checked)+span:not(.lever):after {
+			background-color: transparent;
+		}
 	}
-	.spodní{
-		margin-left: 50px;
+
+	.subcategories {
+		padding-bottom: 1rem;
+		label {
+			padding-left: 3rem;
+
+			span {
+				font-size: 1rem;
+			}
+		}
 	}
 }

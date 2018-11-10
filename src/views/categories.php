@@ -1,18 +1,65 @@
 <div id="page-categories">
 	<h1>Zvolte oblasti otázek:</h1>
-	<input type="checkbox">Osobnosti<br>
-	<input type="checkbox" class="spodní">Politici<br>
-	<input type="checkbox" class="spodní">Sportovci<br>
-	<input type="checkbox" class="spodní">Hudebníci<br>
-	<input type="checkbox" class="spodní">Herci<br>
-	<input type="checkbox" class="spodní">Spisovatelé<br>
-	<input type="checkbox">Novinky<br>
-	<input type="checkbox">Počasé<br>
-	<input type="checkbox">Recepty<br>
-	<input type="checkbox">Hudba<br>
-	<input type="checkbox">Mapy<br>
-	<input type="checkbox">Zoo<br>
-	<input type="checkbox">Demagog<br>
-
-
+	<div class="container">
+		<div class="row">
+			<div class="col m4">
+				<label>
+	 				<input type="checkbox" class="filled-in" checked>
+	 				<span>Osobnosti</span>
+	 			</label>
+	 			<div class="subcategories">
+					<label>
+	 					<input type="checkbox" class="filled-in" checked>
+	 					<span>Politici</span>
+	 				</label>
+					<label>
+	 					<input type="checkbox" class="filled-in" checked>
+	 					<span>Sportovci</span>
+	 				</label>
+	 				<label>
+	 					<input type="checkbox" class="filled-in" checked>
+	 					<span>Hudebníci</span>
+	 				</label>
+					<label>
+	 					<input type="checkbox" class="filled-in" checked>
+	 					<span>Herci</span>
+	 				</label>
+					<label>
+	 					<input type="checkbox" class="filled-in" checked>
+	 					<span>Spisovatelé</span>
+	 				</label>
+				</div>
+			</div>
+			<div class="col m4">
+				<label>
+	 				<input type="checkbox" class="filled-in" checked>
+	 				<span>Novinky</span>
+	 			</label>
+	 			<label>
+	 				<input type="checkbox" class="filled-in" checked>
+	 				<span>Počasí</span>
+	 			</label>
+	 			<label>
+	 				<input type="checkbox" class="filled-in" checked>
+	 				<span>Recepty</span>
+	 			</label>
+	 			<label>
+	 				<input type="checkbox" class="filled-in" checked>
+	 				<span>Hudba</span>
+	 			</label>
+	 			<label>
+	 				<input type="checkbox" class="filled-in" checked>
+	 				<span>Mapy</span>
+	 			</label>
+	 			<label>
+	 				<input type="checkbox" class="filled-in" checked>
+	 				<span>ZOO</span>
+	 			</label>
+	 			<label>
+	 				<input type="checkbox" class="filled-in" checked>
+	 				<span>Demagog</span>
+	 			</label>
+			</div>
+		</div>
+	</div>
 </div>

@@ -1,16 +1,35 @@
 class Page {
 	constructor() {
-		console.log("scam");
 		this.afterMove = {
-			scam: "scam"
+			login: function(pageElement) {
+				pageElement.find("button").on("click", function() {
+					var page = new Page()
+					page.move("categories")
+				});
+			}
 		};
 	}
 
 	move(pageName) {
-		$("#pages>div").hide()
-		$("#pages>#page-"+pageName).show()
+		var that = this
 
-		console.log(this.afterMove)
+		if (!$("#pages>div:visible").length)
+			return this._showPage(pageName);
+
+		$("#pages>div:visible").fadeOut(200, function() {
+			that._showPage(pageName)
+		})
+	}
+
+	_showPage(pageName) {
+		var pageElement = $("#pages>#page-"+pageName);
+		var that = this;
+
+		pageElement.fadeIn(200, function() {
+			var afterMove = that.afterMove[pageName]
+			if (afterMove)
+				afterMove(pageElement)
+		})
 	}
 }
 
