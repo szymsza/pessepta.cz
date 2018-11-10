@@ -9,7 +9,13 @@ class Question {
 	}
 
 	render() {
-		Hund.say("Myslíš si, že je vyhledávanější "+this.data[0].text+", nebo "+this.data[1].text+"?")
+		var firstName = this.data[0].text
+		var secondName = this.data[1].text
+		Hund.say([
+			"Myslíš si, že je vyhledávanější "+firstName+", nebo "+secondName+"?",
+			"Je podle tebe vyhledávanější "+firstName+", nebo "+secondName+"?",
+			[ "Jaký dotaz lidé zadávají častěji?", firstName+", nebo "+secondName ]
+		], true)
 
 		this._fillCard(this.page.find(".row .col:first-child .card"), this.data[0])
 		this._fillCard(this.page.find(".row .col:nth-child(2) .card"), this.data[1])
@@ -32,10 +38,22 @@ class Question {
 		this.isGuessed = true;
 		// TODO - zvuk výhry/prohry
 		if (this.data.winner == guessed.count) {
-			Hund.say("Máš pravdu, "+guessed.text+" je vyhledávanější")
+			Hund.say([
+				"Máš pravdu, "+guessed.text+" je vyhledávanější",
+				"Je to tak. Jupí!",
+				"Taky si myslím, dobrá práce",
+				"Přesně tak. Jen tak dál!"
+			], true)
 			window.game.points++
 		} else
-			Hund.say("Ani píču kámo, "+guessed.text+" je méně vyhledávaný")
+			Hund.say([
+				"Mrzí mě to, ale není to tak",
+				"Bohužel tvá odpověď není správná",
+				"Bylo to těsné, ale ne",
+				"Příště se zadaří",
+				"Tentovkát to bohužel "+guessed.text+" není",
+				"Bohužel, "+guessed.text+" je méně vyhledávaný"
+			], true)
 		
 		this._updatePoints();
 

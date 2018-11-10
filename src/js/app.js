@@ -7,9 +7,10 @@ $(document).ready(function() {
 
 	setTimeout(function() {
 		Hund.say([
-			"ahoj kámo!",
-			"vítej ve hře Pes se ptá, teda já se ptám, haha",
-			"vyber, jestli jsi osamělá kunda, nebo máš nějaký kámoše, se kterýma chceš hrát"
+			"haf haf!",
+			"ahoj seznamáku!",
+			"vítej ve hře Pes se ptá, neboli já, Krasty, se ptám",
+			"chceš si hrát sám, nebo s přáteli?"
 		]);
 	}, 500);
 

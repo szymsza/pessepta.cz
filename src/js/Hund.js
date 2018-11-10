@@ -1,6 +1,9 @@
 class Hund {
 	static say(text, random=false) {
-		console.log(random);
+		if (random && (typeof text == "array" || typeof text == "object"))
+			return Hund.say(text[Math.floor(Math.random()*text.length)])
+
+
 		if (typeof text == "string")
 			return responsiveVoice.speak(text, "Czech Female", {
 				onstart: this._openMouth, 

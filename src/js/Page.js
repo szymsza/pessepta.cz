@@ -9,15 +9,24 @@ class Page {
 					var page = new Page()
 
 					if ($(this).data("type") == "single")
-						Hund.say("To nevadí, budeme si hrát spolu")
+						Hund.say([
+							"tak fajn, budeme si hrát spolu", 
+							"přizpůsob si hru podle svých představ"
+						])
 					else
-						Hund.say("No jo, pán má kámoše")
+						Hund.say([
+							"tohle napíšeme, až budeme mít singleplejer"
+						])
 
 					page.move("settings")
 				});
 			},
 
 			categories: function(pageElement) {
+				Hund.say([
+					"vyber si své soutěžní otázky"
+				]);
+
 				pageElement.find("input[type=checkbox]").on("change", function() {
 					var next = $(this).parent().next();
 					if (!next.hasClass("subcategories"))
