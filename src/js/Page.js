@@ -5,6 +5,8 @@ class Page {
 	constructor() {
 		this.afterMove = {
 			login: function(pageElement) {
+				if (annyang)
+					annyang.setLanguage("cs");
 				pageElement.find("button").off().on("click", function() {
 					var page = new Page()
 
@@ -177,7 +179,7 @@ class Page {
 
 		if (annyang && pageName != "questions") {
 			annyang.removeCommands();
-			annyang.abort();
+			annyang.pause();
 		}
 
 		pageElement.fadeIn(200, function() {
