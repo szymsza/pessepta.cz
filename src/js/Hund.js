@@ -43,6 +43,10 @@ class Hund {
 	static _closeMouth() {
 		$(".hund img").attr("src", "imgs/seznam_hund.png")
 	}
+
+	static play(file) {
+		console.log(file)
+	}
 }
 
 export { Hund as default }

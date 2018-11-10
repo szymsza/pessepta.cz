@@ -40,10 +40,12 @@ while (count($return) < $settings["rounds"]) {
 
 	$query = $db->query("SELECT * FROM `records` WHERE `category` in ('".implode("', '", $categories)."') AND `id` != '".$items[0]["id"]."' AND ".$condition." ORDER BY RAND() LIMIT 1");
 
-	if (!$query->fetch())
+	$item = $query->fetch();
+
+	if (!$item)
 		continue;
 
-	$items[] = $query->fetch();
+	$items[] = $item;
 
 	$result = [];
 
