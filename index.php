@@ -1,3 +1,4 @@
+<!-- 2018 tým √1764 - Jan Grepl, Daniel Grbin, Adam Karásek, Jakub Szymsza -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -6,7 +7,7 @@
 		<meta name="theme-color" content="#B20D0A">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 		<link rel="stylesheet" type="text/css" href="dist/main.css">
-		<title>Pes se ptá</title>
+		<title>Pes se ptá | Seznam Hackathon hra</title>
 	</head>
 	<body>
 
