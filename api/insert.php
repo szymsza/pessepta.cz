@@ -35,15 +35,18 @@ switch ($insert["category"]) {
 }
 
 // Query already exists
-if ($db->query("SELECT * FROM `records` WHERE `text` = '".$insert["text"]."'")->fetchColumn())
+if ($db->query("SELECT * FROM `records` WHERE `text` = '".$insert["text"]."'")->fetchColumn()) {
+	$db->query("UPDATE `records` SET `image` = '".$insert["image"]."' WHERE `text` = '".$insert["text"]."'");
 	die(json_encode([
-		"ok" => false,
-		"message" => "already exists"
+		"ok" => true,
+		"message" => "updated"
 	]));
+}
 
 $db->prepare("INSERT INTO `records` (`text`, `year`, `month`, `day`, `category`, `image`) VALUES (:text, :year, :month, :day, :category, :image)")->execute($insert);
 
 
 echo json_encode([
-	"ok" => true
+	"ok" => true,
+	"message" => "created"
 ]);
