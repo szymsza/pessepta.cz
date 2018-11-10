@@ -8,8 +8,23 @@ class Page {
 if (annyang) {
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
-    'test': function() {
-      alert("test");
+    'singleplayer': function() {
+      window.game = {
+							players: [
+								{
+									name: "Skóre",
+									points: 0
+								}
+							]
+						}
+						page.move("settings")
+						Hund.say([
+							"tak fajn, budeme hrát spolu", 
+							"přizpůsob si hru podle svých představ"
+						])
+    },
+    multiplayer: function() {
+    	page.move("multiplayer");
     }
   };
 
