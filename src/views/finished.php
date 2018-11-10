@@ -1,4 +1,4 @@
-<div id="page-finished">
+<div id="page-finished"> 
 	<h1>Konec hry</h1>
 	<div class="container">
 		<div class="row single-result">
