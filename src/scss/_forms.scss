@@ -1,0 +1,34 @@
+body #pages .form-page {
+	label {
+		display: block;
+		padding-bottom: 1rem;
+
+		span {
+			color: black;
+			font-size: 1.5rem;
+			height: 40px;
+			line-height: 40px;
+			padding-left: calc(40px + 1rem);
+
+			&::after {
+				background-color: #e53935 !important;
+				border-color: #e53935 !important;
+			}
+		}
+
+		input+span:not(.lever):after, [type="radio"]+span:before {
+			width: 40px !important;
+			height: 40px !important;
+		}
+
+		input:not(:checked)+span:not(.lever):after {
+			background-color: transparent !important;
+		}
+
+		input:checked+span:not(.lever):before {
+			width: 17px;
+			height: 30px;
+			border-width: 5px;
+		}
+	}
+}

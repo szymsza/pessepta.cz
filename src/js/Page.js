@@ -1,4 +1,5 @@
 import Hund from "./Hund.js"
+import Question from "./Question.js"
 
 class Page {
 	constructor() {
@@ -8,15 +9,24 @@ class Page {
 					var page = new Page()
 
 					if ($(this).data("type") == "single")
-						Hund.say("Ty osamělá mrdko, ok")
+						Hund.say([
+							"tak fajn, budeme si hrát spolu", 
+							"přizpůsob si hru podle svých představ"
+						])
 					else
-						Hund.say("No jo, pán má kámoše")
+						Hund.say([
+							"tohle napíšeme, až budeme mít singleplejer"
+						])
 
-					page.move("categories")
+					page.move("settings")
 				});
 			},
 
 			categories: function(pageElement) {
+				Hund.say([
+					"vyber si své soutěžní otázky"
+				]);
+
 				pageElement.find("input[type=checkbox]").on("change", function() {
 					var next = $(this).parent().next();
 					if (!next.hasClass("subcategories"))
@@ -42,28 +52,43 @@ class Page {
 					if (!pageElement.find("input[type=checkbox]:checked").length)
 						return Hund.say("vyber něco, debile");
 
-					var categories = {};
-					pageElement.find(".col > label input:checked").each(function() {
-						var subcategories = [];
-
-						if ($(this).parent().next().hasClass("subcategories"))
-							$(this).parent().next().find("input:checked").each(function() {
-								subcategories.push($(this).data("value"))
-							});
-
-						categories[$(this).data("value")] = subcategories;
+					var categories = [];
+					pageElement.find(".col input:checked").each(function() {
+						categories.push($(this).data("value"));
 					});
 
 					window.selectedCategories = categories;
 
-					var page = new Page()
-					page.move("questions");
+					Question.loadQuestions();
 				});
 			},
 
 			questions: function(pageElement) {
-				console.log(window.selectedCategories);
-			}
+				var question = new Question(window.game.questions[0], pageElement)
+				question.render();
+
+				window.game.questions.shift();
+			},
+
+			settings: function(pageElement) {
+				pageElement.find("button").on("click", function() {
+					window.gameSettings = {
+						difficult: $("input[name=difficult]:checked").val(),
+						period: $("input[name=period]:checked").val(),
+						rounds: $("input[name=rounds]:checked").val(),
+					}
+
+					var page = new Page();
+					page.move("categories")
+				})
+			},
+
+			finished: function(pageElement) {
+				pageElement.find("button").on("click", function() {
+					var page = new Page();
+					page.move("login")
+				})
+			},
 		};
 	}
 
@@ -83,6 +108,8 @@ class Page {
 		var that = this;
 
 		pageElement.fadeIn(200, function() {
+			$(".points").toggleClass("hide", (pageName != "questions"));
+
 			var afterMove = that.afterMove[pageName]
 			if (afterMove)
 				afterMove(pageElement)
