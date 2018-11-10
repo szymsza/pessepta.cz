@@ -37,11 +37,11 @@ class Hund {
 	}
 
 	static _openMouth() {
-		$(".hund img").attr("src", "imgs/seznam_hund.gif")
+		$(".hund img").attr("src", "assets/imgs/seznam_hund.gif")
 	}
 
 	static _closeMouth() {
-		$(".hund img").attr("src", "imgs/seznam_hund.png")
+		$(".hund img").attr("src", "assets/imgs/seznam_hund.png")
 	}
 
 	static play(file) {
