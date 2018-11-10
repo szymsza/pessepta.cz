@@ -39,9 +39,9 @@ class Question {
 		// TODO - zvuk výhry/prohry
 		if (this.data.winner == guessed.count) {
 			Hund.say([
-				"Máš pravdu, "+guessed.text+" je vyhledávanější",
+				"Máš pravdu, "+guessed.text+" je vyhledávanější.",
 				"Je to tak. Jupí!",
-				"Taky si myslím, dobrá práce",
+				"Taky si myslím, dobrá práce.",
 				"Přesně tak. Jen tak dál!"
 			], true)
 			window.game.points++
