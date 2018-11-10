@@ -5,7 +5,7 @@ class Page {
 	constructor() {
 		this.afterMove = {
 			login: function(pageElement) {
-				pageElement.find("button").on("click", function() {
+				pageElement.find("button").off().on("click", function() {
 					var page = new Page()
 
 					if ($(this).data("type") == "single")
@@ -27,7 +27,7 @@ class Page {
 					"vyber si své soutěžní otázky"
 				]);
 
-				pageElement.find("input[type=checkbox]").on("change", function() {
+				pageElement.find("input[type=checkbox]").off().on("change", function() {
 					var next = $(this).parent().next();
 					if (!next.hasClass("subcategories"))
 						return false
@@ -35,7 +35,7 @@ class Page {
 					next.find("input").prop("checked", this.checked);
 				});
 
-				pageElement.find(".subcategories input[type=checkbox]").on("change", function() {
+				pageElement.find(".subcategories input[type=checkbox]").off().on("change", function() {
 					var subcategories = $(this).parent().parent()
 					var parentCheckbox = subcategories.prev().find("input")[0]
 					if (this.checked)
@@ -48,7 +48,7 @@ class Page {
 
 				});
 
-				pageElement.find("button").on("click", function() {
+				pageElement.find("button").off().on("click", function() {
 					if (!pageElement.find("input[type=checkbox]:checked").length)
 						return Hund.say("vyber něco, debile");
 
@@ -71,7 +71,7 @@ class Page {
 			},
 
 			settings: function(pageElement) {
-				pageElement.find("button").on("click", function() {
+				pageElement.find("button").off().on("click", function() {
 					window.gameSettings = {
 						difficult: $("input[name=difficult]:checked").val(),
 						period: $("input[name=period]:checked").val(),
@@ -84,7 +84,7 @@ class Page {
 			},
 
 			finished: function(pageElement) {
-				pageElement.find("button").on("click", function() {
+				pageElement.find("button").off().on("click", function() {
 					var page = new Page();
 					page.move("login")
 				})
