@@ -11,17 +11,17 @@
 	 			</label>
 
 	 			<label>
-	 				<input type="checkbox" class="filled-in" data-value="hovno">
+	 				<input type="checkbox" class="filled-in" data-value="porn">
 	 				<span>Recepty</span>
 	 			</label>
 
 	 			<label>
-	 				<input type="checkbox" class="filled-in" data-value="hovno">
+	 				<input type="checkbox" class="filled-in" data-value="maps">
 	 				<span>Mapy</span>
 	 			</label>
 
 	 			<label>
-	 				<input type="checkbox" class="filled-in" data-value="hovno">
+	 				<input type="checkbox" class="filled-in" data-value="other">
 	 				<span>Ostatní</span>
 	 			</label>
 			</div>
