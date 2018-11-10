@@ -64,12 +64,12 @@ class Question {
 		var that = this;
 
 		if (annyang) {
-  			annyang.addCommands({
-    			data.text: function() {
-      				if (!that.isGuessed)
-						that._makeGuess(data)
-    			}
-    		});
+			var commands = {};
+			commands[data["text"]] = function() {
+      			if (!that.isGuessed)
+					that._makeGuess(data)
+    		}
+  			annyang.addCommands(commands);
 
   			annyang.start();
 		}
