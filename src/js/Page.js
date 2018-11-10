@@ -9,11 +9,11 @@ class Page {
 					var page = new Page()
 
 					if ($(this).data("type") == "single")
-						Hund.say("Ty osamělá mrdko, ok")
+						Hund.say("To nevadí, budeme si hrát spolu")
 					else
 						Hund.say("No jo, pán má kámoše")
 
-					page.move("categories")
+					page.move("settings")
 				});
 			},
 
@@ -59,6 +59,19 @@ class Page {
 				question.render();
 
 				window.game.questions.shift();
+			},
+
+			settings: function(pageElement) {
+				pageElement.find("button").on("click", function() {
+					window.gameSettings = {
+						difficult: $("input[name=difficult]:checked").val(),
+						period: $("input[name=period]:checked").val(),
+						rounds: $("input[name=rounds]:checked").val(),
+					}
+
+					var page = new Page();
+					page.move("categories")
+				})
 			}
 		};
 	}

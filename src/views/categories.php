@@ -1,5 +1,5 @@
-<div id="page-categories">
-	<h1>Zvolte oblasti otázek:</h1>
+<div id="page-categories" class="form-page">
+	<h1>Zvolte oblasti otázek</h1>
 	<div class="container">
 		<div class="row">
 			<div class="col m5">

@@ -65,7 +65,8 @@ class Question {
 		$.ajax("api", {
 			data: {
 				type: "question",
-				categories: window.selectedCategories
+				categories: window.selectedCategories,
+				settings: window.gameSettings
 			}
 		}).done(function(d) {
 			window.game = {

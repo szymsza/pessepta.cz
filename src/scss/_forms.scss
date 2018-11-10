@@ -1,4 +1,4 @@
-#page-categories {
+body #pages .form-page {
 	label {
 		display: block;
 		padding-bottom: 1rem;
@@ -11,18 +11,18 @@
 			padding-left: calc(40px + 1rem);
 
 			&::after {
-				background-color: #e53935;
-				border-color: #e53935;
+				background-color: #e53935 !important;
+				border-color: #e53935 !important;
 			}
 		}
 
-		input+span:not(.lever):after {
-			width: 40px;
-			height: 40px;
+		input+span:not(.lever):after, [type="radio"]+span:before {
+			width: 40px !important;
+			height: 40px !important;
 		}
 
 		input:not(:checked)+span:not(.lever):after {
-			background-color: transparent;
+			background-color: transparent !important;
 		}
 
 		input:checked+span:not(.lever):before {
