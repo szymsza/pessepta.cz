@@ -45,7 +45,8 @@ class Hund {
 	}
 
 	static play(file) {
-		console.log(file)
+		var audio = new Audio('assets/audio/'+file);
+		audio.play();
 	}
 }
 

@@ -2,7 +2,6 @@ import Page from "./Page.js"
 import Hund from "./Hund.js"
 
 function greet() {
-	Hund.play("ring.mp3")
 	Hund.say([
 		"haf haf!",
 		"ahoj seznamáku!",

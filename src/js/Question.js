@@ -38,6 +38,7 @@ class Question {
 		this.isGuessed = true;
 		// TODO - zvuk výhry/prohry
 		if (this.data.winner == guessed.count) {
+			Hund.play("ring.mp3")
 			Hund.say([
 				"Máš pravdu, "+guessed.text+" je vyhledávanější.",
 				"Je to tak. Jupí!",
