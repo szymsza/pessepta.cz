@@ -3,5 +3,7 @@
 header('Content-Type: application/json');
 echo json_encode([
 	"ok" => true,
-	"content" => $_POST
+	"post" => $_POST,
+	"get" => $_GET,
+	"request" => $_REQUEST
 ]);
