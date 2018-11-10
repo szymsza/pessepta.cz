@@ -5,5 +5,9 @@ $(document).ready(function() {
 	var page = new Page()
 	page.move("login")
 
-	Hund.say("ahoj pičo");
+	Hund.say([
+		"ahoj píčo!",
+		"vítej ve hře Pes se ptá, teda já se ptám, haha",
+		"vyber, jestli jsi osamělá kunda, nebo máš nějaký kámoše, se kterýma chceš hrát"
+	]);
 });
