@@ -47,6 +47,9 @@ class Question {
 			Hund.say(phrase)
 		}
 
+		if (annyang)
+			annyang.removeCommands()
+
 		this._fillCard(this.page.find(".row .col:first-child .card"), this.data[0])
 		this._fillCard(this.page.find(".row .col:nth-child(2) .card"), this.data[1])
 
@@ -58,6 +61,18 @@ class Question {
 		element.find("img").attr("src", data.image)
 		element.find(".card-title").toggleClass("winning", data.count == this.data.winner).text(data.countText).hide();
 		element.parent().find("a").attr("href", "https://search.seznam.cz/?q="+encodeURI(data.text))
+		var that = this;
+
+		if (annyang) {
+  			annyang.addCommands({
+    			data.text: function() {
+      				if (!that.isGuessed)
+						that._makeGuess(data)
+    			}
+    		});
+
+  			annyang.start();
+		}
 
 		element.off().on("click", (function() {
 			if (!this.isGuessed)
