@@ -106,6 +106,20 @@ class Question {
 		
 		this._updatePoints();
 
+		var that = this;
+
+		if (annyang) {
+			annyang.removeCommands()
+			var commands = {
+				"pokračovat": function() {
+      				that.page.find(".button-wrapper").click();
+    			}
+    		};
+  			annyang.addCommands(commands);
+
+  			annyang.start();
+		}
+
 		this.page.find(".card-title, .button-wrapper").fadeIn(350);
 
 		this.page.find(".button-wrapper").off().on("click", (function() {

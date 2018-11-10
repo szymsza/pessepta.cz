@@ -175,6 +175,11 @@ class Page {
 		var pageElement = $("#pages>#page-"+pageName);
 		var that = this;
 
+		if (annyang && pageName != "question") {
+			annyang.removeCommands();
+			annyang.abort();
+		}
+
 		pageElement.fadeIn(200, function() {
 			$(".points, .round_wrapper").toggleClass("hide", (pageName != "questions"));
 
