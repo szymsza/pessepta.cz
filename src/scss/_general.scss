@@ -22,8 +22,17 @@ h1 {
 	position: fixed;
 	right: 0;
 	top: 25%;
-	img {
+	> img {
 		height: 40vh;
+	}
+
+	span {
+		cursor: pointer;
+		img {
+			display: block;
+			width: 3rem;
+			margin: 0 auto;
+		}
 	}
 }
 
