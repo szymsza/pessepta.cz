@@ -8,17 +8,22 @@ class Page {
 				pageElement.find("button").off().on("click", function() {
 					var page = new Page()
 
-					if ($(this).data("type") == "single")
+					if ($(this).data("type") == "single") {
+						window.game = {
+							players: [
+								{
+									name: "Skóre",
+									points: 0
+								}
+							]
+						}
+						page.move("settings")
 						Hund.say([
 							"tak fajn, budeme si hrát spolu", 
 							"přizpůsob si hru podle svých představ"
 						])
-					else
-						Hund.say([
-							"tohle napíšeme, až budeme mít singleplejer"
-						])
-
-					page.move("settings")
+					} else
+						page.move("multiplayer");
 				});
 			},
 
@@ -75,7 +80,7 @@ class Page {
 					window.gameSettings = {
 						difficult: $("input[name=difficult]:checked").val(),
 						period: $("input[name=period]:checked").val(),
-						rounds: $("input[name=rounds]:checked").val(),
+						rounds: $("input[name=rounds]:checked").val() * window.game.players.length,
 					}
 
 					var page = new Page();
@@ -89,6 +94,52 @@ class Page {
 					page.move("login")
 				})
 			},
+
+			multiplayer: function(pageElement) {
+				Hund.say([
+					"zadej prosím jména jednotlivých hráčů"
+				])
+
+				$(document).on("click", ".remove-row", function() {
+					$(this).closest(".row").remove();
+				});
+
+				pageElement.find(".add-row").off().on("click", function() {
+					var newRow = $("#page-multiplayer .container .row:first-child").clone();
+
+					newRow.find("input").val("")
+
+					newRow.insertAfter($("#page-multiplayer .container .row:nth-last-child(2)"));
+
+					newRow.find("input").focus();
+				});
+
+				pageElement.find(".continue-button").off().on("click", function() {
+					var names = [];
+					pageElement.find("input[type=text]").each(function() {
+						var value = $(this).val().trim();
+
+						if (value == "") {
+							Hund.say("Vyplň prosím jména všech hráčů.");
+							names = false;
+							return false;
+						}
+
+						names.push({ 
+							name: value,
+							points: 0
+						});
+					});
+
+					if (names) {
+						window.game = {
+							players: names
+						}
+						var page = new Page();
+						page.move("settings");
+					}
+				});
+			}
 		};
 	}
 

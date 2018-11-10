@@ -3,6 +3,9 @@ import Hund from "./Hund.js"
 
 class Question {
 	constructor(data, page) {
+		if (++window.game.currentPlayer >= window.game.players.length)
+			window.game.currentPlayer = 0;
+
 		this.page = page;
 		this.data = data;
 		this.isGuessed = false;
@@ -11,11 +14,36 @@ class Question {
 	render() {
 		var firstName = this.data[0].text
 		var secondName = this.data[1].text
-		Hund.say([
-			"Myslíš si, že je vyhledávanější "+firstName+", nebo "+secondName+"?",
+
+		var phrases = [
+		 	"Myslíš si, že je vyhledávanější "+firstName+", nebo "+secondName+"?",
 			"Je podle tebe vyhledávanější "+firstName+", nebo "+secondName+"?",
-			[ "Jaký dotaz lidé zadávají častěji?", firstName+", nebo "+secondName ]
-		], true)
+			"Jaký dotaz lidé zadávají častěji? "+firstName+", nebo "+secondName
+		]
+
+		var phrase = phrases[Math.floor(Math.random()*phrases.length)]
+
+		var prephrases = [
+			"Nyní je na řadě ",
+			"Teď bude hrát ",
+			"Pozor pozor, přichází ",
+			"Na řadu se dostává "
+		]
+
+		var prephrase = prephrases[Math.floor(Math.random()*prephrases.length)]
+
+		if (window.game.players.length > 1) {
+			$(".points .tab .active").removeClass("active");
+			$(".points .tab:nth-child("+(parseInt(window.game.currentPlayer)+1)+") a").addClass("active");			
+
+			Hund.say([
+				prephrase+window.game.players[window.game.currentPlayer].name,
+				phrase
+			])
+		} else {
+			$(".points .tab a").addClass("active");
+			Hund.say(phrase)
+		}
 
 		this._fillCard(this.page.find(".row .col:first-child .card"), this.data[0])
 		this._fillCard(this.page.find(".row .col:nth-child(2) .card"), this.data[1])
@@ -44,7 +72,8 @@ class Question {
 				"Taky si myslím, dobrá práce.",
 				"Přesně tak. Jen tak dál!"
 			], true)
-			window.game.points++
+
+			$("li:nth-child("+(parseInt(window.game.currentPlayer)+1)+") .points_received").text(++window.game.players[window.game.currentPlayer].points);
 		} else {
 			Hund.play("wrong.mp3")
 			Hund.say([
@@ -91,12 +120,24 @@ class Question {
 				settings: window.gameSettings
 			}
 		}).done(function(d) {
-			window.game = {
-				questions: d,
-				points: 0
+			window.game.questions = d
+			window.game.currentPlayer = -1;
+
+			$(".points li:nth-child(n+2)").remove()
+
+			for (let index in window.game.players) {
+				let player = window.game.players[index];
+
+				if (!$(".points li:nth-child("+(parseInt(index)+1)+")").length) {
+					var clone = $(".points li:first-child").clone();
+					clone.appendTo($(".points ul"));
+				}
+
+				let wrapper = $(".points li:nth-child("+(parseInt(index)+1)+")");
+				wrapper.find(".points_name").text(player.name);
 			}
 
-			$(".points_total").text(d.length);
+			$(".points_total").text(d.length / window.game.players.length);
 			$(".points_received").text(0)
 
 			var page = new Page()

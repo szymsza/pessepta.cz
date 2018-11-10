@@ -1,12 +1,53 @@
 #page-multiplayer{
-	display: none;
-	h1{
-		text-align: center;
-		size: 50px	;
-		color: black;
-	}
-	input{
-		width: 100px;
-		height: 20px;
+	counter-reset: multiplayer-counter;
+	.col {
+		&.input-field {
+			margin: 5px 0;
+
+			&:before {
+				content: counter(multiplayer-counter) ".";
+				counter-increment: multiplayer-counter;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left: -2rem;
+			}
+
+			input:focus {
+				box-shadow: 0 1px 0 0 #E53935;
+				border-bottom-color: #E53935;
+
+				&+label {
+					color: #E53935;
+				}
+			}
+		}
+
+		&:last-child {
+			.remove-row {
+				line-height: calc(3rem + 10px);
+				height: calc(3rem + 10px);
+				padding: 15px 0;
+				cursor: pointer;
+				color: #E53935;
+				font-size: 2rem;
+
+				@at-root {
+					#page-multiplayer .container .row {
+						&:first-child, &:nth-child(2) {
+							.remove-row {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.button-wrapper {
+			button {
+				margin: 0 5px;
+			}
+		}
 	}
 }

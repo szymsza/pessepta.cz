@@ -12,7 +12,7 @@ function greet() {
 
 $(document).ready(function() {
 	var page = new Page()
-	page.move("login")
+	page.move("multiplayer")
 
 	setTimeout(function() {
 		// sound won't play until document has focus
