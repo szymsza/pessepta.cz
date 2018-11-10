@@ -22,6 +22,7 @@ h1 {
 	position: fixed;
 	right: 0;
 	top: 25%;
+	z-index: -1;
 	> img {
 		height: 40vh;
 	}
