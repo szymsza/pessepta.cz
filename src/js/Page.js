@@ -72,7 +72,14 @@ class Page {
 					var page = new Page();
 					page.move("categories")
 				})
-			}
+			},
+
+			finished: function(pageElement) {
+				pageElement.find("button").on("click", function() {
+					var page = new Page();
+					page.move("login")
+				})
+			},
 		};
 	}
 

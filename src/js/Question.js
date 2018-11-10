@@ -47,18 +47,20 @@ class Question {
 			if (window.game.questions.length)
 				page.move("questions");
 			else {
-				page.move("login")
+				page.move("finished")
 				this._endGame();
 			}
 		}).bind(this));
 	}
 
 	_endGame() {
-		Hund.say("Konec kokote!");
+		var points = window.game.points;
+
+		Hund.say(["Konec hry!", "Získal jsi "+points+" bod"+(points == 1 ? "" : (points > 4 || points == 0 ? "ů" : "y"))+" z "+($(".points_total")[0].innerText)+".", "Chceš hrát znovu?"]);
 	}
 
 	_updatePoints() {
-		$("#points_received").text(window.game.points);
+		$(".points_received").text(window.game.points);
 	}
 
 	static loadQuestions() {
@@ -74,8 +76,8 @@ class Question {
 				points: 0
 			}
 
-			$("#points_total").text(d.length);
-			$("#points_received").text(0)
+			$(".points_total").text(d.length);
+			$(".points_received").text(0)
 
 			var page = new Page()
 			page.move("questions");

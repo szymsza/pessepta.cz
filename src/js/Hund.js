@@ -1,5 +1,6 @@
 class Hund {
-	static say(text) {
+	static say(text, random=false) {
+		console.log(random);
 		if (typeof text == "string")
 			return responsiveVoice.speak(text, "Czech Female", {
 				onstart: this._openMouth, 
