@@ -55,10 +55,10 @@ class Page {
 			},
 
 			questions: function(pageElement) {
-				var question = new Question(questions[0], pageElement)
+				var question = new Question(window.game.questions[0], pageElement)
 				question.render();
 
-				questions.shift();
+				window.game.questions.shift();
 			}
 		};
 	}
@@ -79,6 +79,8 @@ class Page {
 		var that = this;
 
 		pageElement.fadeIn(200, function() {
+			$(".points").toggleClass("hide", (pageName != "questions"));
+
 			var afterMove = that.afterMove[pageName]
 			if (afterMove)
 				afterMove(pageElement)

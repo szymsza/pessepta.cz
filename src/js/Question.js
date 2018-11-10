@@ -31,17 +31,20 @@ class Question {
 	_makeGuess(guessed) {
 		this.isGuessed = true;
 		// TODO - zvuk výhry/prohry
-		if (this.data.winner == guessed.count)
+		if (this.data.winner == guessed.count) {
 			Hund.say("Máš pravdu, "+guessed.text+" je vyhledávanější")
-		else
+			window.game.points++
+		} else
 			Hund.say("Ani píču kámo, "+guessed.text+" je méně vyhledávaný")
 		
+		this._updatePoints();
+
 		this.page.find(".card-title, .button-wrapper").fadeIn(350);
 
 		this.page.find(".button-wrapper").off().on("click", (function() {
 			var page = new Page()
 
-			if (window.questions.length)
+			if (window.game.questions.length)
 				page.move("questions");
 			else {
 				page.move("login")
@@ -54,6 +57,10 @@ class Question {
 		Hund.say("Konec kokote!");
 	}
 
+	_updatePoints() {
+		$("#points_received").text(window.game.points);
+	}
+
 	static loadQuestions() {
 		$.ajax("api", {
 			data: {
@@ -61,7 +68,14 @@ class Question {
 				categories: window.selectedCategories
 			}
 		}).done(function(d) {
-			window.questions = d;
+			window.game = {
+				questions: d,
+				points: 0
+			}
+
+			$("#points_total").text(d.length);
+			$("#points_received").text(0)
+
 			var page = new Page()
 			page.move("questions");
 		});

@@ -11,13 +11,13 @@ for ($i=0; $i < 5; $i++) {
 
 	$biggest = 0;
 	foreach ($query->fetchAll() as $item) {
-		if ($item["count"] > $biggest)
-			$biggest = $item["count"];
+		if ($item["year"] > $biggest)
+			$biggest = $item["year"];
 		$result[] = [
 			"text" => $item["text"],
 			"image" => $item["image"],
-			"count" => $item["count"],
-			"countText" => number_format($item["count"], 0, ",", " ")." denně"
+			"count" => $item["year"],
+			"countText" => number_format($item["year"], 0, ",", " ")." denně"
 		];
 	}
 
