@@ -22,7 +22,10 @@ $(document).ready(function() {
 			$(window).one("focus", greet);
 	}, 500);
 
-	$(".hund img").click(function() {
+	$(".hund>img").click(function() {
 		Hund.say("haf haf")
 	});
+
+	window.sound = true;
+	$(".hund>span>img").click(Hund.toggleSound);
 });
