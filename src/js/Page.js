@@ -6,6 +6,7 @@ class Page {
 		this.afterMove = {
 			login: function(pageElement) {
 if (annyang) {
+
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
     'singleplayer': function() {
@@ -17,6 +18,7 @@ if (annyang) {
 								}
 							]
 						}
+						var page = new Page()
 						page.move("settings")
 						Hund.say([
 							"tak fajn, budeme hrát spolu", 
@@ -24,6 +26,7 @@ if (annyang) {
 						])
     },
     multiplayer: function() {
+    	var page = new Page()
     	page.move("multiplayer");
     }
   };
