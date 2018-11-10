@@ -38,7 +38,7 @@ while (count($return) < $settings["rounds"]) {
 		$condition = "((`".$settings["period"]."` < '".($count - $count*$limits["difficult"])."' AND `".$settings["period"]."` > '".($count - $count*$limits["easy"])."') OR 
 					(`".$settings["period"]."` > '".($count + $count*$limits["difficult"])."' AND `".$settings["period"]."` < '".($count + $count*$limits["easy"])."'))";
 
-	$query = $db->query("SELECT * FROM `records` WHERE `category` in ('".implode("', '", $categories)."') AND `id` != '".$items[0]["id"]."' AND ".$condition." ORDER BY RAND() LIMIT 1");
+	$query = $db->query("SELECT * FROM `records` WHERE `category` = '".$items[0]["category"]."' AND `id` != '".$items[0]["id"]."' AND ".$condition." ORDER BY RAND() LIMIT 1");
 
 	$item = $query->fetch();
 
@@ -51,7 +51,7 @@ while (count($return) < $settings["rounds"]) {
 
 	$biggest = $count;
 	foreach ($items as $item) {
-		$count = $items[0][$settings["period"]];
+		$count = $item[$settings["period"]];
 		if ($count > $biggest)
 			$biggest = $count;
 
