@@ -19,9 +19,6 @@ switch ($settings["period"]) {
 
 $return = [];
 
-$difficultLimit = 0.15;
-$easyLimit = 0.75;
-
 $i = 0;
 
 while (count($return) < $settings["rounds"]) { 
@@ -36,23 +33,25 @@ while (count($return) < $settings["rounds"]) {
 
 	# difficult - difference is 0-10%; easy - difference is 10-50%
 	if ($settings["difficult"])
-		$condition = "(`".$settings["period"]."` > '".($count - $count*$difficultLimit)."' AND `".$settings["period"]."` < '".($count + $count*$difficultLimit)."')";
+		$condition = "(`".$settings["period"]."` > '".($count - $count*$limits["difficult"])."' AND `".$settings["period"]."` < '".($count + $count*$limits["difficult"])."')";
 	else
-		$condition = "((`".$settings["period"]."` < '".($count - $count*$difficultLimit)."' AND `".$settings["period"]."` > '".($count - $count*$easyLimit)."') OR 
-					(`".$settings["period"]."` > '".($count + $count*$difficultLimit)."' AND `".$settings["period"]."` < '".($count + $count*$easyLimit)."'))";
+		$condition = "((`".$settings["period"]."` < '".($count - $count*$limits["difficult"])."' AND `".$settings["period"]."` > '".($count - $count*$limits["easy"])."') OR 
+					(`".$settings["period"]."` > '".($count + $count*$limits["difficult"])."' AND `".$settings["period"]."` < '".($count + $count*$limits["easy"])."'))";
 
-	$query = $db->query("SELECT * FROM `records` WHERE `category` in ('".implode("', '", $categories)."') AND `id` != '".$items[0]["id"]."' AND ".$condition." ORDER BY RAND() LIMIT 1");
+	$query = $db->query("SELECT * FROM `records` WHERE `category` = '".$items[0]["category"]."' AND `id` != '".$items[0]["id"]."' AND ".$condition." ORDER BY RAND() LIMIT 1");
 
-	if (!$query->fetch())
+	$item = $query->fetch();
+
+	if (!$item)
 		continue;
 
-	$items[] = $query->fetch();
+	$items[] = $item;
 
 	$result = [];
 
 	$biggest = $count;
 	foreach ($items as $item) {
-		$count = $items[0][$settings["period"]];
+		$count = $item[$settings["period"]];
 		if ($count > $biggest)
 			$biggest = $count;
 

@@ -1,3 +1,3 @@
 <div class="hund">
-	<img src="imgs/seznam_hund.png">
+	<img src="assets/imgs/seznam_hund.png">
 </div>
