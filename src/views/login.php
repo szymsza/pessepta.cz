@@ -8,13 +8,13 @@
 			</div>
 			<div class="col m6">
 	 			<button class="waves-effect waves-light btn-large red darken-1" data-type="single">
-	 				<img src="imgs/forever_alone.png">
+	 				<img src="assets/imgs/forever_alone.png">
 				 	Singleplayer
 			 	</button>
 			</div>
 			<div class="col m6">
 	 			<button class="waves-effect waves-light btn-large red darken-1" data-type="multi">
-	 				<img src="imgs/like_a_boss.png">
+	 				<img src="assets/imgs/like_a_boss.png">
 	 				Multiplayer
 	 			</button>
 			</div>
