@@ -5,7 +5,9 @@ function greet() {
 	Hund.say([
 		"haf haf!",
 		"ahoj seznamáku!",
-		"vítej ve hře Pes se ptá, neboli já, Krasty, se ptám",
+		"vítej ve hře Pes se ptá",
+		"moje jméno je Krasty",
+		"jsem pes od seznamu a budu vás touto hrou provázet",
 		"chceš si hrát sám, nebo s přáteli?"
 	]);
 }
