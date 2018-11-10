@@ -50,7 +50,7 @@ class Page {
 
 				pageElement.find("button").off().on("click", function() {
 					if (!pageElement.find("input[type=checkbox]:checked").length)
-						return Hund.say("vyber něco, debile");
+						return Hund.say("vyber si prosím kategorie, se kterými chceš hrát");
 
 					var categories = [];
 					pageElement.find(".col input:checked").each(function() {
