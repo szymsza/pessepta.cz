@@ -26,7 +26,7 @@ class Question {
 	_fillCard(element, data) {
 		element.find(".card-action").text(data.text)
 		element.find("img").attr("src", data.image)
-		element.find(".card-title").text(data.countText).hide();
+		element.find(".card-title").toggleClass("winning", data.count == this.data.winner).text(data.countText).hide();
 
 		element.off().on("click", (function() {
 			if (!this.isGuessed)
