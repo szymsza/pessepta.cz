@@ -22,7 +22,14 @@ $return = [];
 $difficultLimit = 0.15;
 $easyLimit = 0.75;
 
+$i = 0;
+
 while (count($return) < $settings["rounds"]) { 
+	$i++;
+
+	if ($i >= 5000)
+		die();
+
 	$query = $db->query("SELECT * FROM `records` WHERE `category` in ('".implode("', '", $categories)."') ORDER BY RAND() LIMIT 1");
 	$items = [$query->fetch()];
 	$count = $items[0][$settings["period"]];
