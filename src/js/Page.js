@@ -111,7 +111,7 @@ class Page {
 				if (annyang) {
 					var commands = {
 						"hrát znovu": function() {
-							for (index in window.game.players) {
+							for (let index in window.game.players) {
 								window.game.players[index].points = 0
 							}
       						Question.loadQuestions();
