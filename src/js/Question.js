@@ -109,7 +109,7 @@ class Question {
 		var that = this;
 
 		if (annyang) {
-			annyang.removeCommands()
+			//annyang.removeCommands()
 			var commands = {
 				"okay": function() {
 					alert("continus");
